@@ -17,7 +17,8 @@
     "build": "slidev build example.md",
     "dev": "slidev example.md --open",
     "export": "slidev export example.md",
-    "screenshot": "slidev export example.md --format png"
+    "screenshot": "slidev export example.md --format png",
+    "release": "bumpp && npm publish"
   },
   "dependencies": {
     "@slidev/types": "^0.39.0",
@@ -26,7 +27,8 @@
     "theme-vitesse": "^0.6.2"
   },
   "devDependencies": {
-    "@slidev/cli": "^0.39.0"
+    "@slidev/cli": "^0.39.0",
+    "bumpp": "^8.2.1"
   },
   "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
   "slidev": {
