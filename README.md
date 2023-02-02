@@ -1,8 +1,10 @@
+![theme-banner.png](https://user-images.githubusercontent.com/47495003/216353479-1d9987bc-60f3-413c-af93-07a5a3b1ac04.png)
+
 # slidev-theme-dracula
 
-[![NPM version](https://img.shields.io/npm/v/slidev-theme-dracula?color=3AB9D4&label=)](https://www.npmjs.com/package/slidev-theme-dracula)
+[![NPM version](https://img.shields.io/npm/v/slidev-theme-dracula?color=bd93f9&label=)](https://www.npmjs.com/package/slidev-theme-dracula)
 
-A (...) theme for [Slidev](https://github.com/slidevjs/slidev).
+A Dracula theme for [Slidev](https://github.com/slidevjs/slidev).
 
 <!--
   Learn more about how to write a theme:
@@ -33,13 +35,11 @@ Learn more about [how to use a theme](https://sli.dev/themes/use).
 
 This theme provides the following layouts:
 
-> TODO:
+> _Supported by default theme of slidev_
 
 ## Components
 
-This theme provides the following components:
-
-> TODO:
+> _Raise issue_
 
 ## Contributing
 

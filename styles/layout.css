@@ -1,7 +1,23 @@
+/* Dracula spec: https: //spec.draculatheme.com/ */
+
 :root {
-  // default theme color
-  // can be overrided by uses `themeConfig` option
-  --slidev-theme-primary: #5d8392;
+  /*
+    default theme color
+    can be overrided by uses `themeConfig` option
+   */
+
+  /* Dracula colors: https: //draculatheme.com/contribute */
+  --background: hsl(231, 15%, 18%);
+  --current-line: hsl(232, 14%, 31%);
+  --foreground: hsl(60, 30%, 96%);
+  --comment: hsl(225, 27%, 51%);
+  --cyan: hsl(191, 97%, 77%);
+  --green: hsl(135, 94%, 65%);
+  --orange: hsl(31, 100%, 71%);
+  --pink: hsl(326, 100%, 74%);
+  --purple: hsl(265, 89%, 78%);
+  --red: hsl(0, 100%, 67%);
+  --yellow: hsl(65, 92%, 76%);
 }
 
 .slidev-layout.cover,
@@ -9,14 +25,65 @@
   @apply h-full grid;
 
   h1 {
-    @apply text-6xl leading-20;
+    @apply text-6xl leading-20 text-color-$purple;
   }
 
-  h1 + p {
-    @apply -mt-2 opacity-50 mb-4;
+  h1+p {
+    @apply -mt-2 text-color-$comment mb-4;
   }
 
-  p + h2, ul + h2, table + h2 {
+  p+h2,
+  ul+h2,
+  table+h2 {
     @apply mt-10;
+  }
+}
+
+#slide-content {
+
+  @apply text-color-$foreground bg-$background !important;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-color-$purple;
+  }
+
+  strong {
+    @apply text-color-$orange;
+  }
+
+  em {
+    @apply text-color-$yellow;
+  }
+
+  a {
+    @apply text-color-$cyan;
+  }
+
+  ul,
+  ol {
+    li::marker {
+      @apply text-color-$cyan;
+    }
+  }
+
+  blockquote {
+    @apply bg-transparent text-color-$yellow border-none;
+
+    /* ℹ️ "font-italic" isn't working */
+    font-style: italic;
+  }
+
+  kbd {
+    @apply text-color-$green;
+  }
+
+  /* ℹ️ Update background color of code. We made it darker so we don't get same color for slide bg & code bg. */
+  .slidev-code.shiki {
+    background: hsl(231, 15%, 10%) !important;
   }
 }

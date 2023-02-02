@@ -1,10 +1,11 @@
 ---
 theme: ./
+favicon: 'https://draculatheme.com/static/img/favicon.ico'
 ---
 
-# Slidev Theme Starter
+# Dracula Theme
 
-Presentation slides for developers
+One of the best dark theme meets slidev
 
 <div class="pt-12">
   <span @click="next" class="px-2 p-1 rounded cursor-pointer hover:bg-white hover:bg-opacity-10">

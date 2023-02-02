@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "keywords": [
     "slidev-theme",
-    "slidev"
+    "slidev",
+    "dracula",
+    "dracula-theme",
+    "dark-theme",
+    "theme"
   ],
   "engines": {
     "node": ">=14.0.0",
@@ -26,14 +30,14 @@
   },
   "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
   "slidev": {
-    "colorSchema": "both",
-    "highlighter": "all",
+    "colorSchema": "dark",
+    "highlighter": "shiki",
     "defaults": {
       "fonts": {
         "sans": "Nunito Sans",
         "mono": "Fira Code"
       },
-      "hightlighter": "prism"
+      "hightlighter": "shiki"
     }
   }
 }
