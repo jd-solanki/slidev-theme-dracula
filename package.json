@@ -16,6 +16,7 @@
   "scripts": {
     "build": "slidev build example.md",
     "dev": "slidev example.md --open",
+    "git": "slidev git.md --open",
     "export": "slidev export example.md",
     "screenshot": "slidev export example.md --format png",
     "release": "bumpp && npm publish"
