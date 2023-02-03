@@ -36,6 +36,7 @@
     "highlighter": "shiki",
     "defaults": {
       "fonts": {
+        "serif": "Plus Jakarta Sans",
         "sans": "Nunito Sans",
         "mono": "Fira Code"
       },

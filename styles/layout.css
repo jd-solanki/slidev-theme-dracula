@@ -50,6 +50,8 @@
   h5,
   h6 {
     @apply text-color-$purple;
+    font-family: 'Plus Jakarta Sans';
+    font-weight: 800;
   }
 
   strong {
@@ -76,6 +78,12 @@
 
     /* ℹ️ "font-italic" isn't working */
     font-style: italic;
+
+    p::before {
+      content: '>';
+      display: inline-block;
+      margin-inline-end: 0.5rem;
+    }
   }
 
   kbd {
@@ -85,5 +93,14 @@
   /* ℹ️ Update background color of code. We made it darker so we don't get same color for slide bg & code bg. */
   .slidev-code.shiki {
     background: hsl(231, 15%, 10%) !important;
+  }
+
+  :not(pre)>code {
+    background: transparent;
+    color: var(--green);
+  }
+
+  img {
+    border-radius: 6px;
   }
 }
