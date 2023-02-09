@@ -1,6 +1,6 @@
-![theme-banner.png](https://user-images.githubusercontent.com/47495003/216353479-1d9987bc-60f3-413c-af93-07a5a3b1ac04.png)
-
 # slidev-theme-dracula
+
+![theme-banner.png](https://user-images.githubusercontent.com/47495003/217882601-bd444dff-8e47-4240-940d-49e9e21fed41.png)
 
 [![NPM version](https://img.shields.io/npm/v/slidev-theme-dracula?color=bd93f9&label=)](https://www.npmjs.com/package/slidev-theme-dracula)
 
