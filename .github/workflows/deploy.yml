@@ -1,0 +1,38 @@
+name: Deploy pages
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Install Dependencies
+        run: pnpm i
+
+      - name: Install slidev
+        run:  pnpm add -g @slidev/cli
+
+      - name: Build
+        run: slidev build example.md --base slidev-theme-dracula
+
+      - name: Deploy pages
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
