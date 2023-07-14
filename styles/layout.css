@@ -86,4 +86,8 @@
   .slidev-code.shiki {
     background: hsl(231, 15%, 10%) !important;
   }
+
+  :not(pre)>code {
+    @apply bg-transparent text-color-$green;
+  }
 }
