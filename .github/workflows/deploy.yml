@@ -12,6 +12,16 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - uses: actions/checkout@v3
 
@@ -33,9 +43,12 @@ jobs:
       - name: Build
         run: slidev build example.md --base slidev-theme-dracula
 
-      - name: Deploy pages
-        uses: crazy-max/ghaction-github-pages@v2
+      - uses: actions/configure-pages@v3
+
+      - uses: actions/upload-pages-artifact@v1
         with:
-          build_dir: dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          path: dist
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v2
