@@ -11,7 +11,6 @@ export const slidesDir = path.join(repoRoot, 'slides')
 export const distDir = path.join(repoRoot, 'dist')
 
 const slides = globbySync('*.md', { cwd: slidesDir })
-console.log('slides :>> ', slides);
 
 const indexMdContent: string[] = ['# Slidev Theme Dracula']
 
