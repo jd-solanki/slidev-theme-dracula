@@ -37,8 +37,8 @@ jobs:
       - name: Install slidev
         run:  pnpm add -g @slidev/cli
 
-      - name: Build
-        run: slidev build example.md --base slidev-theme-dracula
+      - name: Build slidev examples
+        run: pnpm run gen:demos
 
       - name: Convert index.md to index.html
         uses: jd-solanki/gh-action-md-to-html@v1.2.0
