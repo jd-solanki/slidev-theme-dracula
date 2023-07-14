@@ -1,8 +1,5 @@
 name: Deploy pages
 
-permissions:
-  contents: write
-
 on:
   workflow_dispatch: {}
   push:
@@ -42,6 +39,11 @@ jobs:
 
       - name: Build
         run: slidev build example.md --base slidev-theme-dracula
+
+      - name: Convert index.md to index.html
+        uses: jd-solanki/gh-action-md-to-html@v1.2.0
+        with:
+          files: '[["dist/index.md", "dist/index.html"]]'
 
       - uses: actions/configure-pages@v3
 

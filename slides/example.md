@@ -1,5 +1,5 @@
 ---
-theme: ./
+theme: ../
 favicon: 'https://draculatheme.com/static/img/favicon.ico'
 ---
 
@@ -48,16 +48,15 @@ Hover on the bottom-left corner to see the navigation's controls panel
 | <kbd>down</kbd> | next slide |
 
 ---
-
 layout: image-right
-image: '<https://source.unsplash.com/collection/94734566/1920x1080>'
+image: https://source.unsplash.com/collection/94734566/1920x1080
 ---
 
 # Code
 
 Use code snippets and get the highlighting directly!
 
-```ts
+```ts {all|2|1-6|all}
 interface User {
   id: number
   firstName: string
@@ -72,10 +71,12 @@ function updateUser(id: number, update: Partial<User>) {
 }
 ```
 
-And this nicely handles `inline` code as well.
+And it nicely handles `inline` code as well.
 
 ---
-
+layout: center
+class: "text-center"
+---
 # Learn More
 
-[Documentations](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
+[Documentations](https://sli.dev) / [GitHub Repo](https://github.com/jd-solanki/slidev-theme-dracula)

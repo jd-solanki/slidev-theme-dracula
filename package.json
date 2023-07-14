@@ -14,21 +14,28 @@
     "slidev": ">=0.19.3"
   },
   "scripts": {
-    "build": "slidev build example.md",
-    "dev": "slidev example.md --open",
-    "export": "slidev export example.md",
-    "screenshot": "slidev export example.md --format png",
+    "build": "tsx scripts/build.ts",
+    "dev": "slidev slides/example.md --open",
+    "dev:layouts": "slidev slides/layouts.md --open",
+    "export": "slidev export slides/example.md",
+    "screenshot": "slidev export slides/example.md --format png",
     "release": "bumpp package.json"
   },
   "dependencies": {
-    "@slidev/types": "^0.39.0",
-    "codemirror-theme-vars": "^0.1.1",
+    "@slidev/types": "^0.42.5",
+    "codemirror-theme-vars": "^0.1.2",
     "prism-theme-vars": "^0.2.4",
-    "theme-vitesse": "^0.6.2"
+    "theme-vitesse": "^0.7.2"
   },
   "devDependencies": {
-    "@slidev/cli": "^0.39.0",
-    "bumpp": "^8.2.1"
+    "@iconify-json/iconoir": "^1.1.29",
+    "@iconify-json/logos": "^1.1.33",
+    "@slidev/cli": "^0.42.5",
+    "@types/node": "^20.4.2",
+    "bumpp": "^9.1.1",
+    "globby": "^13.2.2",
+    "serve": "^14.2.0",
+    "tsx": "^3.12.7"
   },
   "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
   "slidev": {
@@ -37,7 +44,7 @@
     "defaults": {
       "fonts": {
         "sans": "Nunito Sans",
-        "mono": "Fira Code"
+        "mono": "JetBrains Mono"
       },
       "hightlighter": "shiki"
     }

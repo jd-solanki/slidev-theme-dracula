@@ -35,7 +35,7 @@ Learn more about [how to use a theme](https://sli.dev/themes/use).
 
 This theme provides the following layouts:
 
-> _Supported by default theme of slidev_
+> _Please refer to the source code of the [available layouts](https://github.com/jd-solanki/slidev-theme-dracula/tree/main/layouts) to learn more about how to use them._
 
 ## 📦 Components
 

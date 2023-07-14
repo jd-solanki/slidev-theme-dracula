@@ -1,4 +1,4 @@
-/* Dracula spec: https: //spec.draculatheme.com/ */
+/* Dracula spec: https://spec.draculatheme.com/ */
 
 :root {
   /*
@@ -20,74 +20,156 @@
   --yellow: hsl(65, 92%, 76%);
 }
 
-.slidev-layout.cover,
-.slidev-layout.intro {
-  @apply h-full grid;
+/* ℹ️ #app increases the specificity of .dark selector from upstream layout styles  */
+#app {
+  #slide-content {
 
-  h1 {
-    @apply text-6xl leading-20 text-color-$purple;
-  }
+    --at-apply: text-$foreground bg-$background !important;
 
-  h1+p {
-    @apply -mt-2 text-color-$comment mb-4;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      --at-apply: text-$purple;
+    }
 
-  p+h2,
-  ul+h2,
-  table+h2 {
-    @apply mt-10;
-  }
-}
+    strong {
+      --at-apply: text-$orange;
+    }
 
-#slide-content {
+    em {
+      --at-apply: text-$yellow;
+    }
 
-  @apply text-color-$foreground bg-$background !important;
+    a {
+      --at-apply: text-$cyan;
+    }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply text-color-$purple;
-  }
+    ul,
+    ol {
+      li::marker {
+        --at-apply: text-$cyan;
+      }
+    }
 
-  strong {
-    @apply text-color-$orange;
-  }
+    blockquote {
+      --at-apply: bg-transparent text-$yellow border-none;
 
-  em {
-    @apply text-color-$yellow;
-  }
+      /* ℹ️ "font-italic" isn't working */
+      font-style: italic;
+    }
 
-  a {
-    @apply text-color-$cyan;
-  }
+    kbd {
+      --at-apply: text-$green;
+    }
 
-  ul,
-  ol {
-    li::marker {
-      @apply text-color-$cyan;
+    /* ℹ️ Update background color of code. We made it darker so we don't get same color for slide bg & code bg. */
+    .slidev-code.shiki {
+      background: hsl(231, 15%, 10%) !important;
+    }
+
+    :not(pre)>code {
+      --at-apply: bg-transparent text-$green;
     }
   }
 
-  blockquote {
-    @apply bg-transparent text-color-$yellow border-none;
+  /* Layout: Cover, Intro */
+  .slidev-layout.cover,
+  .slidev-layout.intro {
+    --at-apply: h-full grid;
 
-    /* ℹ️ "font-italic" isn't working */
-    font-style: italic;
+    h1 {
+      --at-apply: text-6xl leading-20 text-$purple;
+    }
+
+    h1+p {
+      --at-apply: -mt-2 text-$comment mb-4;
+    }
+
+    p+h2,
+    ul+h2,
+    table+h2 {
+      --at-apply: mt-10;
+    }
   }
 
-  kbd {
-    @apply text-color-$green;
+  /* Layout: Face */
+  .slidev-layout.fact {
+    --at-apply: text-center grid h-full;
+
+    h1 {
+      --at-apply: text-8xl font-700;
+    }
+
+    h1+p {
+      --at-apply: font-700 text-2xl;
+    }
   }
 
-  /* ℹ️ Update background color of code. We made it darker so we don't get same color for slide bg & code bg. */
-  .slidev-code.shiki {
-    background: hsl(231, 15%, 10%) !important;
+  /* Layout: Statement */
+  .slidev-layout.statement {
+    --at-apply: text-center grid h-full;
+
+    h1 {
+      --at-apply: text-6xl font-700;
+    }
   }
 
-  :not(pre)>code {
-    @apply bg-transparent text-color-$green;
+  /* Layout: Section */
+  .slidev-layout.section {
+    h1 {
+      --at-apply: text-6xl font-500 leading-20;
+    }
+  }
+
+  /* Layout: Face */
+  .slidev-layout.fact {
+    --at-apply: text-center grid h-full;
+
+    h1 {
+      --at-apply: text-8xl font-700;
+    }
+
+    h1+p {
+      --at-apply: font-700 text-2xl;
+    }
+  }
+
+  /* Layout: Quote */
+  .slidev-layout.quote {
+    --at-apply: grid h-full;
+
+    h1+p {
+      --at-apply: mt-2;
+    }
+  }
+
+  /* Layout: Author */
+  .slidev-layout.author {
+    img {
+      --at-apply: rounded-full mx-auto;
+    }
+
+    h1 {
+      --at-apply: text-3xl font-600 mb-0 next-[p]-mt-2;
+    }
+
+    h1+p {
+      --at-apply: max-w-40ch mx-auto;
+    }
+
+    footer {
+      --at-apply: pt-16 text-sm flex justify-center items-center;
+
+      a {
+        --at-apply: ms-2 me-6;
+      }
+
+      a:not(:hover) {
+        color: inherit !important;
+      }
+    }
   }
 }
