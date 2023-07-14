@@ -18,7 +18,7 @@
     "dev": "slidev example.md --open",
     "export": "slidev export example.md",
     "screenshot": "slidev export example.md --format png",
-    "release": "bumpp && npm publish"
+    "release": "bumpp package.json"
   },
   "dependencies": {
     "@slidev/types": "^0.39.0",
