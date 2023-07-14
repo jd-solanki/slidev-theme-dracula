@@ -105,5 +105,5 @@ class: "text-center"
 
 # Learn More
 
-[Documentations](https://sli.dev) / [GitHub Repo](https://github.com/slidevjs/slidev)
+[Source Code](https://github.com/jd-solanki/slidev-theme-dracula/blob/main/slides/layouts.md) / [GitHub Repo](https://github.com/jd-solanki/slidev-theme-dracula)
 

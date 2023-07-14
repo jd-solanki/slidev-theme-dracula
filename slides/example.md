@@ -79,4 +79,4 @@ class: "text-center"
 ---
 # Learn More
 
-[Documentations](https://sli.dev) / [GitHub Repo](https://github.com/jd-solanki/slidev-theme-dracula)
+[Source Code](https://github.com/jd-solanki/slidev-theme-dracula/blob/main/slides/example.md) / [GitHub Repo](https://github.com/jd-solanki/slidev-theme-dracula)
