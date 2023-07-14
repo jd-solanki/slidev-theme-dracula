@@ -1,14 +1,26 @@
 {
   "name": "slidev-theme-dracula",
   "version": "0.1.1",
+  "description": "Dracula theme for Slidev",
+  "author": "JD Solanki <https://github.com/jd-solanki>",
+  "funding": "https://github.com/sponsors/jd-solanki",
+  "homepage": "https://jd-solanki.github.io/slidev-theme-dracula/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jd-solanki/slidev-theme-dracula.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jd-solanki/slidev-theme-dracula/issues"
+  },
   "keywords": [
-    "slidev-theme",
+    "slidev theme",
     "slidev",
     "dracula",
-    "dracula-theme",
-    "dark-theme",
+    "dracula theme",
+    "dark theme",
     "theme"
   ],
+  "license": "MIT",
   "engines": {
     "node": ">=14.0.0",
     "slidev": ">=0.19.3"
