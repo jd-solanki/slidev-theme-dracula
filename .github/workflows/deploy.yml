@@ -41,9 +41,11 @@ jobs:
         run: pnpm run gen:demos
 
       - name: Convert index.md to index.html
-        uses: jd-solanki/gh-action-md-to-html@v1.2.0
+        uses: jd-solanki/gh-action-md-to-html@main
         with:
           files: '[["dist/index.md", "dist/index.html"]]'
+          title: 'Slidev Theme Dracula | Examples'
+          favicon: https://draculatheme.com/static/img/favicon.ico
 
       - uses: actions/configure-pages@v3
 

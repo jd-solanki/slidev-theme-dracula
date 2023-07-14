@@ -1,6 +1,7 @@
 ---
 theme: ../
 layout: cover
+favicon: 'https://draculatheme.com/static/img/favicon.ico'
 ---
 
 # Cover Layout
