@@ -14,7 +14,7 @@
     "slidev": ">=0.19.3"
   },
   "scripts": {
-    "build": "slidev build example.md",
+    "build": "slidev build slides/example.md",
     "gen:demos": "tsx scripts/build.ts",
     "dev": "slidev slides/example.md --open",
     "dev:layouts": "slidev slides/layouts.md --open",
