@@ -42,6 +42,8 @@ This theme provides the following layouts:
 
 > _Please refer to the source code of the [available layouts](https://github.com/jd-solanki/slidev-theme-dracula/tree/main/layouts) to learn more about how to use them._
 
+For a preview of the layouts, please refer to [layouts](https://jd-solanki.github.io/slidev-theme-dracula/layouts/) demo.
+
 ## 📦 Components
 
 > _Raise issue_
