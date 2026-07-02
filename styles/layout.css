@@ -21,8 +21,13 @@
 }
 
 /* ℹ️ #app increases the specificity of .dark selector from upstream layout styles  */
+/* ℹ️ Target `.slidev-slide-content`/`.print-slide-container` instead of `#slide-content`,
+   since the id is only set on the "main" slide in the live viewer and is absent
+   during PDF/PNG/PPTX export and /print, where PrintSlideClick.vue renders slides
+   with `.print-slide-container` instead. Both classes cover viewer and export alike. */
 #app {
-  #slide-content {
+  .slidev-slide-content,
+  .print-slide-container {
 
     --at-apply: text-$foreground bg-$background !important;
 
