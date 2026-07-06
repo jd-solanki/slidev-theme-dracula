@@ -33,10 +33,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Trusted publishing (OIDC) requires npm >= 11.5.1; Node's bundled npm may be older
+      - name: Update npm for trusted publishing
+        run: npm install -g npm@latest
+
+      # No token: npm exchanges the GitHub id-token via trusted publishing (OIDC).
+      # Provenance is generated automatically on top of it.
       - name: Publish package
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        run: npm publish --access public
 
       # Run last so a failed publish never creates a dangling GitHub release
       - name: Generate changelog & GitHub release
