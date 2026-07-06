@@ -22,8 +22,8 @@
   ],
   "license": "MIT",
   "engines": {
-    "node": ">=14.0.0",
-    "slidev": ">=0.19.3"
+    "node": ">=20.0.0",
+    "slidev": ">=52.0.0"
   },
   "scripts": {
     "build": "slidev build slides/example.md",
@@ -35,20 +35,20 @@
     "release": "bumpp package.json"
   },
   "dependencies": {
-    "@slidev/types": "^0.42.5",
+    "@slidev/types": "^52.16.0",
     "codemirror-theme-vars": "^0.1.2",
-    "prism-theme-vars": "^0.2.4",
-    "theme-vitesse": "^0.7.2"
+    "prism-theme-vars": "^0.2.5",
+    "theme-vitesse": "^1.0.0"
   },
   "devDependencies": {
-    "@iconify-json/iconoir": "^1.1.29",
-    "@iconify-json/logos": "^1.1.33",
-    "@slidev/cli": "^0.42.5",
-    "@types/node": "^20.4.2",
-    "bumpp": "^9.1.1",
-    "globby": "^13.2.2",
-    "serve": "^14.2.0",
-    "tsx": "^3.12.7"
+    "@iconify-json/iconoir": "^1.2.11",
+    "@iconify-json/logos": "^1.2.11",
+    "@slidev/cli": "^52.16.0",
+    "@types/node": "^26.1.0",
+    "bumpp": "^11.1.0",
+    "globby": "^16.2.1",
+    "serve": "^14.2.6",
+    "tsx": "^4.23.0"
   },
   "//": "Learn more: https://sli.dev/themes/write-a-theme.html",
   "slidev": {
