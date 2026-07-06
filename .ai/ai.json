@@ -1,0 +1,30 @@
+{
+  "packages": {
+    "jd-solanki/.ai": {
+      "version": "v1.0.25",
+      "linked": [
+        "CLAUDE.md",
+        "skills/automate-commit-based-gh-release-changelog",
+        "skills/automate-npm-release",
+        "skills/clean-code",
+        "skills/code-organisation",
+        "skills/codebase-design",
+        "skills/coding",
+        "skills/comment-code",
+        "skills/domain-modeling",
+        "skills/git-commit",
+        "skills/grill-me",
+        "skills/grill-with-docs",
+        "skills/grilling",
+        "skills/implement",
+        "skills/improve-codebase-architecture",
+        "skills/node-cli",
+        "skills/review",
+        "skills/to-issues",
+        "skills/to-prd",
+        "skills/writing-great-skills",
+        "AGENTS.md"
+      ]
+    }
+  }
+}

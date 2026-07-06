@@ -1,0 +1,146 @@
+name: Publish Packages
+
+on:
+  push:
+    tags:
+      - 'cli-v*'
+      - 'env-parser-v*'
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Publish package
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Set up Vite+
+        uses: voidzero-dev/setup-vp@v1
+        with:
+          cache: false
+          node-version: '24'
+
+      - name: Set up npm registry
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Select package from tag
+        id: package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          case "${GITHUB_REF_NAME}" in
+            cli-v*)
+              echo "dir=packages/cli" >> "${GITHUB_OUTPUT}"
+              echo "prefix=cli-v" >> "${GITHUB_OUTPUT}"
+              echo "name=@envolix/cli" >> "${GITHUB_OUTPUT}"
+              ;;
+            env-parser-v*)
+              echo "dir=packages/env-parser" >> "${GITHUB_OUTPUT}"
+              echo "prefix=env-parser-v" >> "${GITHUB_OUTPUT}"
+              echo "name=@envolix/env-parser" >> "${GITHUB_OUTPUT}"
+              ;;
+            *)
+              echo "::error title=Unsupported release tag::${GITHUB_REF_NAME}"
+              exit 1
+              ;;
+          esac
+
+      - name: Find previous package tag
+        id: previous-tag
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          previous_tag="$(
+            git tag --sort=-v:refname \
+              | awk -v prefix="${TAG_PREFIX}" -v current="${GITHUB_REF_NAME}" '
+                  index($0, prefix) == 1 && $0 != current { print; exit }
+                '
+          )"
+
+          if [ -z "${previous_tag}" ]; then
+            previous_tag="$(git rev-list --max-parents=0 HEAD)"
+            echo "::notice title=No previous package tag::Using initial commit ${previous_tag} as explicit changelog base."
+          fi
+
+          echo "from=${previous_tag}" >> "${GITHUB_OUTPUT}"
+        env:
+          TAG_PREFIX: ${{ steps.package.outputs.prefix }}
+
+      - name: Validate package release
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          package_name="$(node -p "require('./${PACKAGE_DIR}/package.json').name")"
+          package_version="$(node -p "require('./${PACKAGE_DIR}/package.json').version")"
+          tag_version="${GITHUB_REF_NAME#${TAG_PREFIX}}"
+
+          if [ "${package_name}" != "${EXPECTED_PACKAGE}" ]; then
+            echo "::error title=Package mismatch::${PACKAGE_DIR}/package.json is ${package_name}, expected ${EXPECTED_PACKAGE} for ${GITHUB_REF_NAME}."
+            exit 1
+          fi
+
+          if [ "${package_version}" != "${tag_version}" ]; then
+            echo "::error title=Tag version mismatch::${GITHUB_REF_NAME} points to ${tag_version}, but ${PACKAGE_DIR}/package.json is ${package_version}."
+            exit 1
+          fi
+
+          if npm view "${package_name}@${package_version}" version --registry=https://registry.npmjs.org >/dev/null 2>&1; then
+            echo "::error title=Version already published::${package_name}@${package_version} already exists on npm. Bump ${PACKAGE_DIR}/package.json before pushing ${GITHUB_REF_NAME}."
+            exit 1
+          fi
+        env:
+          PACKAGE_DIR: ${{ steps.package.outputs.dir }}
+          TAG_PREFIX: ${{ steps.package.outputs.prefix }}
+          EXPECTED_PACKAGE: ${{ steps.package.outputs.name }}
+
+      - name: Run checks
+        run: vp check
+
+      - name: Run tests
+        run: vp test
+
+      - name: Build packages
+        run: vp run -r pack
+
+      - name: Publish package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          pack_output="$(pnpm --dir "${PACKAGE_DIR}" pack --pack-destination "${RUNNER_TEMP}")"
+          echo "${pack_output}"
+
+          tarball="$(printf '%s\n' "${pack_output}" | tail -n 1)"
+          npm publish "${tarball}" --access public
+        env:
+          PACKAGE_DIR: ${{ steps.package.outputs.dir }}
+
+      - name: Create GitHub release
+        run: npx changelogithub@latest --from "${FROM_REF}" --to "${GITHUB_REF_NAME}" --github "${GITHUB_REPOSITORY}" --name "${GITHUB_REF_NAME}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FROM_REF: ${{ steps.previous-tag.outputs.from }}
