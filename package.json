@@ -21,6 +21,7 @@
     "theme"
   ],
   "license": "MIT",
+  "packageManager": "pnpm@11.6.0",
   "engines": {
     "node": ">=20.0.0",
     "slidev": ">=52.0.0"
